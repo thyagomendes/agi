@@ -18,13 +18,4 @@ public class Item {
     public void setQnt(int qnt) { this.qnt = qnt; }
     public float getPrice() { return price; }
     public void setPrice(float price) { this.price = price; }
-
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", qnt=" + qnt +
-                ", price=" + price +
-                '}';
-    }
 }

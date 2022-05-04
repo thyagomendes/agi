@@ -20,13 +20,4 @@ public class Sales {
     public void setSalesManName(String salesManName) { this.salesManName = salesManName; }
     public List<Item> getItems() { return items; }
     public void setItems(List<Item> items) { this.items = items; }
-
-    @Override
-    public String toString() {
-        return "Sales{" +
-                "salesId='" + salesId + '\'' +
-                ", salesManName='" + salesManName + '\'' +
-                ", items=" + items +
-                '}';
-    }
 }

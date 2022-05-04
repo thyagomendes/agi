@@ -18,13 +18,4 @@ public class Client {
     public void setCnpj(Long cnpj) { this.cnpj = cnpj; }
     public String getBranch() { return branch; }
     public void setBranch(String branch) { this.branch = branch; }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "name='" + name + '\'' +
-                ", cnpj=" + cnpj +
-                ", branch='" + branch + '\'' +
-                '}';
-    }
 }

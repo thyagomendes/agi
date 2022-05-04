@@ -32,9 +32,7 @@ public class Boot {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-
             for (WatchEvent<?> event : wk.pollEvents()) {
-
                 if (event.kind() == StandardWatchEventKinds.OVERFLOW) continue;
 
                 WatchEvent<Path> ev = (WatchEvent<Path>) event;
@@ -42,9 +40,7 @@ public class Boot {
                 Path source = folderListener.resolve(fileName);
                 System.out.printf("Arquivo criado: %s\n", source);
             }
-
             managerUseCase.managerProcess(folderIn, folderOut);
-
             if (!wk.reset()) break;
         }
     }

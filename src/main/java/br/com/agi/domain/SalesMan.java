@@ -18,13 +18,4 @@ public class SalesMan {
     public void setCpf(Long cpf) { this.cpf = cpf; }
     public Float getSalary() { return salary; }
     public void setSalary(Float salary) { this.salary = salary; }
-
-    @Override
-    public String toString() {
-        return "SalesMan{" +
-                "name='" + name + '\'' +
-                ", cpf=" + cpf +
-                ", salary=" + salary +
-                '}';
-    }
 }

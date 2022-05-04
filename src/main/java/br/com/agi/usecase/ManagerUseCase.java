@@ -6,12 +6,10 @@ import br.com.agi.domain.Sales;
 import br.com.agi.domain.SalesMan;
 import br.com.agi.service.ManagerInterfaceService;
 import br.com.agi.service.ManagerUtilsFile;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ManagerUseCase implements ManagerInterfaceService {
 
@@ -24,7 +22,6 @@ public class ManagerUseCase implements ManagerInterfaceService {
 
         for (String file : files) {
             fill = readerFileIn(folderIn + file);
-
             List<String> lineInfo = new ArrayList<>();
             List<SalesMan> salesManList = new ArrayList<>();
             List<Client> clientList = new ArrayList<>();
@@ -43,7 +40,6 @@ public class ManagerUseCase implements ManagerInterfaceService {
                             )
                     );
                 }
-
                 if(line.contains("002ç")){
                     lineInfo = Arrays.asList(line.split("ç"));
                     clientList.add(
@@ -54,33 +50,26 @@ public class ManagerUseCase implements ManagerInterfaceService {
                             )
                     );
                 }
-
                 if(line.contains("003ç")){
                     lineInfo = Arrays.asList(line.split("ç"));
                     List<String> itemsInfo = Arrays.asList(
                             lineInfo.get(2).substring(1, lineInfo.get(2).length()-1).split(",")
                     );
                     List<Item> itemList = new ArrayList<>();
-
                     for(String item : itemsInfo){
-
                         List<String> itemInfo = Arrays.asList(item.split("-"));
                         itemList.add(
                                 new Item(
                                         Long.parseLong(itemInfo.get(0)),
                                         Integer.parseInt(itemInfo.get(1)),
-                                        Float.parseFloat(itemInfo.get(2))
-                                )
-                        );
+                                        Float.parseFloat(itemInfo.get(2))));
                     }
 
                     salesList.add(
                             new Sales(
                                     lineInfo.get(1),
                                     lineInfo.get(3),
-                                    itemList
-                            )
-                    );
+                                    itemList));
 
                     idMaxSales = itemList.stream().max(Comparator.comparing(Item::getPrice)).get().getId();
                 }
@@ -99,8 +88,6 @@ public class ManagerUseCase implements ManagerInterfaceService {
                 }
             }
 
-            System.out.println("Vendedor com menor desempenho: " + salesManName + ", total de vendas: " + value);
-
             List<String> fillOut = new ArrayList<>();
             fillOut.add("Qntd de clientes: " + clientList.size());
             fillOut.add("Qntd de vendedor: " + salesManList.size());
@@ -109,10 +96,6 @@ public class ManagerUseCase implements ManagerInterfaceService {
 
             writersFileOut(folderOut + fileOut, fillOut);
         }
-    }
-
-    public void eraseFolder(String folderOut){
-
     }
 
     @Override
